@@ -3,7 +3,7 @@ import Routes from "./Routes";
 import { UserContextProvider } from "./context/UserContext";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:4040";
+  axios.defaults.baseURL = "https://texts-chat-app.onrender.com";
   axios.defaults.withCredentials = true;
 
   return (
