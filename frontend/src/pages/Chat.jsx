@@ -8,6 +8,7 @@ import axios from "axios";
 import Contact from "../components/Contact";
 import classNames from "classnames";
 import CustomScrollbar from "react-custom-scrollbar";
+import axiosBaseService from "../utils/axiosBaseService";
 
 const Chat = () => {
   const [ws, setWs] = useState(null);
@@ -99,7 +100,7 @@ const Chat = () => {
   }
 
   useEffect(() => {
-    axios.get("/people").then((res) => {
+    axiosBaseService.get("/people", {}).then((res) => {
       const offlinePeopleArr = res.data
         .filter((p) => p._id !== id)
         .filter((p) => !Object.keys(onlinePeople).includes(p._id));
@@ -120,7 +121,7 @@ const Chat = () => {
 
   useEffect(() => {
     if (selectedUserId) {
-      axios
+      axiosBaseService
         .get("/messages/" + selectedUserId)
         .then((res) => setMessages(res.data));
     }
