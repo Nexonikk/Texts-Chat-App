@@ -25,7 +25,9 @@ const jwtSecret = process.env.JWT_SECRET;
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: "*", methods: "*" }));
+app.use(
+  cors({ credentials: true, origin: "https://texts-chat-app.vercel.app" })
+);
 const User = userModal;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
